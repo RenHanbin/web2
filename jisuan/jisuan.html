@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>计算器</title>
+	<style type="text/css">
+		table{border:1px solid #ccc;}
+		td{border:1px solid #ccc;}
+		input{
+			text-align:center;
+			display: block;
+			width: 80px;
+			height: 80px;
+			font-size: 20px;
+			margin: auto;
+		}
+		#special{
+			text-align: right;
+			font-weight:bold;
+			font-size: 40px;
+
+		}
+	</style>
+</head>
+<body>
+	<table border="1" width="400" height="500">
+		<tr>
+			<td colspan="3" name="text" id="special">
+				
+			</td>
+			<td>
+			<form>
+				<input type="button" name="clear" value="c" onclick="clearc()">
+			</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<form>
+				<input type="button" name="shu" value="1" onclick="showData(1);return false;">
+			</form>
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="2" onclick="showData(2);return false;">
+			</form>
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="3" onclick="showData(3);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="+" onclick="showData(4);return false;">
+			</form>	
+			</td>
+			
+		</tr>
+		<tr>
+			<td>
+			<form>
+				<input type="button" name="shu" value="4" onclick="showData(5);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="5" onclick="showData(6);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="6" onclick="showData(7);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="-" onclick="showData(8);return false;">
+			</form>	
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<form>
+				<input type="button" name="shu" value="7" onclick="showData(9);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="8" onclick="showData(10);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="9" onclick="showData(11);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="*" onclick="showData(12);return false;">
+			</form>	
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<form>
+				<input type="button" name="shu" value="0" onclick="showData(13);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="."
+				onclick="showData(14);return false;">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="d3" value="="
+				onclick="calculate()">
+			</form>	
+			</td>
+			<td>
+			<form>
+				<input type="button" name="shu" value="/" onclick="showData(16);return false;">
+			</form>	
+			</td>
+		</tr>
+	</table>
+</body>
+<script type="text/javascript">
+	var str='';
+	var b;
+	var fnumber;
+	function showData(i){
+		var a=document.forms[i].shu.value;
+		str+=a;
+		document.getElementById("special").innerHTML = str;
+
+	}
+	function calculate(){
+		var k=0;
+		while(str[k]!='+'&&str[k]!='-'&&str[k]!='*'&&str[k]!='/')
+			{
+				k++;
+			};
+		var fuhao=str[k];		
+		var str1=str.substr(0,k);
+		var str2=str.substr(k+1,str.length-k);
+		var num1=Number(str1);
+		var num2=Number(str2);
+		if(fuhao=="+")
+		{
+			fnumber=num1+num2;
+		}
+		else if(fuhao=="-"){
+			fnumber=num1-num2;
+		}
+		else if(fuhao=="*"){
+			fnumber=num1*num2;
+		}
+		else if(fuhao=="/"){
+			fnumber=num1/num2;
+		}
+		document.getElementById("special").innerHTML = '';
+		document.getElementById("special").innerHTML = fnumber;
+
+	}
+	function clearc(){
+		str='';
+		document.getElementById("special").innerHTML = 0;
+	}
+	
+
+	
+
+</script>
+</html>
